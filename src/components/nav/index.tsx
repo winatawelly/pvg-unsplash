@@ -17,7 +17,7 @@ const Nav = () => {
             className="d-inline-block align-top"
             alt="React Bootstrap logo"
           />
-          PVG-Unspash
+          PVG-Unsplash
         </Navbar.Brand>
       </Container>
     </Navbar>
