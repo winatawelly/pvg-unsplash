@@ -3,7 +3,7 @@
 }
 
 #search-bar {
-  height: 56px;
+  height: 48px;
   background-color: whitesmoke;
   color: black;
   outline: none;
@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 56px;
+  height: 48px;
   padding: 0px 12px;
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;

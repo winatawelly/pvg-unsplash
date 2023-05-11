@@ -1,13 +1,15 @@
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 
+import SearchBar from "../searchBar";
+
 import logo from "./logo.svg";
 
 import "./style.css";
 
 const Nav = () => {
   return (
-    <Navbar bg="dark" variant="dark">
+    <Navbar bg="dark" variant="dark" className="box-shadow" sticky="top">
       <Container>
         <Navbar.Brand href="#home" className="navbar-logo">
           <img
@@ -19,6 +21,9 @@ const Nav = () => {
           />
           PVG-Unsplash
         </Navbar.Brand>
+        <div className="d-flex">
+          <SearchBar />
+        </div>
       </Container>
     </Navbar>
   );
