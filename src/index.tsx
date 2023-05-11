@@ -7,12 +7,14 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Nav from "./components/nav";
 import Home from "./pages/home";
+import Search from "./pages/search";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
   },
+  { path: "/search", element: <Search /> },
 ]);
 
 const root = ReactDOM.createRoot(

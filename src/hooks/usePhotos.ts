@@ -17,7 +17,7 @@ const usePhotos = ({ query }: Props) => {
 
   React.useEffect(() => {
     api.search
-      .getPhotos({ query: "cat", orientation: "landscape" })
+      .getPhotos({ query: "cat", perPage: 20 })
       .then((result) => {
         setData(result.response?.results as Photo[]);
         setIsLoading(false);
