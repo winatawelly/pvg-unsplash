@@ -1,3 +1,5 @@
+import { useSearchParams } from "react-router-dom";
+
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 
@@ -8,6 +10,9 @@ import logo from "./logo.svg";
 import "./style.css";
 
 const Nav = () => {
+  const [searchParams] = useSearchParams();
+  const isHome = !!!searchParams.get("q");
+
   return (
     <Navbar bg="dark" variant="dark" className="box-shadow" sticky="top">
       <Container>
@@ -21,9 +26,11 @@ const Nav = () => {
           />
           PVG-Unsplash
         </Navbar.Brand>
-        <div className="d-flex">
-          <SearchBar />
-        </div>
+        {!isHome && (
+          <div className="d-flex">
+            <SearchBar value={searchParams.get("q") || ""} />
+          </div>
+        )}
       </Container>
     </Navbar>
   );

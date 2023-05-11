@@ -16,8 +16,9 @@ const usePhotos = ({ query }: Props) => {
   });
 
   React.useEffect(() => {
+    setIsLoading(true);
     api.search
-      .getPhotos({ query: "cat", perPage: 20 })
+      .getPhotos({ query: query, perPage: 20 })
       .then((result) => {
         setData(result.response?.results as Photo[]);
         setIsLoading(false);
@@ -26,7 +27,7 @@ const usePhotos = ({ query }: Props) => {
         console.log("something went wrong!");
         setIsError(true);
       });
-  }, []);
+  }, [query]);
 
   return { data, isLoading, isError };
 };
