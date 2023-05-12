@@ -22,6 +22,7 @@
   padding: 0px 12px;
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
+  border-style: none;
 }
 
 #search-bar-icon {
