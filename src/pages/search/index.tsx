@@ -40,19 +40,34 @@ const Search = () => {
           <div className="column">
             {colum1 &&
               colum1.map((img) => (
-                <ImageCard key={img.id} src={img.urls.small} />
+                <ImageCard
+                  key={img.id}
+                  src={img.urls.small}
+                  title={img.description}
+                  author={img.user.name}
+                />
               ))}
           </div>
           <div className="column">
             {colum2 &&
               colum2.map((img) => (
-                <ImageCard key={img.id} src={img.urls.small} />
+                <ImageCard
+                  key={img.id}
+                  src={img.urls.small}
+                  title={img.description}
+                  author={img.user.name}
+                />
               ))}
           </div>
           <div className="column">
             {colum3 &&
               colum3.map((img) => (
-                <ImageCard key={img.id} src={img.urls.small} />
+                <ImageCard
+                  key={img.id}
+                  src={img.urls.small}
+                  title={img.description}
+                  author={img.user.name}
+                />
               ))}
           </div>
         </>
