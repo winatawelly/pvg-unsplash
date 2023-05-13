@@ -7,5 +7,6 @@ export type Photo = {
     username: string;
     name: string;
   };
-  description: string;
+  description?: string;
+  alt_description: string;
 };

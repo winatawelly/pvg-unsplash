@@ -1,0 +1,21 @@
+.image-modal-content {
+  background-color: #202124;
+  color: white;
+}
+
+.image-modal-img {
+  max-height: 75vh;
+  max-width: 100%;
+}
+
+.image-modal-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content-action {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}

@@ -1,0 +1,15 @@
+.like-button {
+  height: 24px;
+  width: 24px;
+  cursor: pointer;
+}
+
+.variant-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+}

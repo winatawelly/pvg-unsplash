@@ -1,4 +1,5 @@
 import landing from "./landing.jpg";
+import landing2 from "./landing2.jpg";
 import SearchBar from "../../components/searchBar";
 
 import "./style.css";
@@ -14,7 +15,6 @@ const Home = () => {
         </div>
         <SearchBar />
       </div>
-      <img src={landing} className="landing-img" alt="React Bootstrap logo" />
     </div>
   );
 };

@@ -1,0 +1,21 @@
+.profile-picture-container {
+  display: flex;
+  align-items: center;
+}
+
+.profile-picture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: black;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-picture-info > p {
+  margin-bottom: 0px;
+  font-size: 18px;
+}

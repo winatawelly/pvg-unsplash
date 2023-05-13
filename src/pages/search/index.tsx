@@ -4,6 +4,7 @@ import usePhotos from "../../hooks/usePhotos";
 import { Photo } from "../../schemas/photo";
 
 import ImageCard from "../../components/ImageCard";
+import ImageModal from "../../components/ImageModal";
 
 import Spinner from "react-bootstrap/Spinner";
 
@@ -17,10 +18,17 @@ const Search = () => {
   const [column1, setColumn1] = React.useState<Photo[] | null>(null);
   const [column2, setColumn2] = React.useState<Photo[] | null>(null);
   const [column3, setColumn3] = React.useState<Photo[] | null>(null);
+  const [selectedImage, setSelectedImage] = React.useState<Photo>();
+  const [isModalOpen, setModalOpen] = React.useState(false);
 
   const { data, isLoading, isError } = usePhotos({
     query: query || "",
   });
+
+  const handleImageClick = (image: Photo) => {
+    setSelectedImage(image);
+    setModalOpen(true);
+  };
 
   React.useEffect(() => {
     if (searchParams.get("q") === "" || searchParams.get("q") === null) {
@@ -62,14 +70,22 @@ const Search = () => {
         </div>
       ) : (
         <>
+          <ImageModal
+            show={isModalOpen}
+            onHide={() => setModalOpen(false)}
+            data={selectedImage}
+          />
           <div className="column">
             {column1 &&
               column1.map((img) => (
                 <ImageCard
                   key={img.id}
                   src={img.urls.small}
-                  title={img.description}
+                  title={
+                    img.description ? img.description : img.alt_description
+                  }
                   author={img.user.name}
+                  onClick={() => handleImageClick(img)}
                 />
               ))}
           </div>
@@ -79,8 +95,11 @@ const Search = () => {
                 <ImageCard
                   key={img.id}
                   src={img.urls.small}
-                  title={img.description}
+                  title={
+                    img.description ? img.description : img.alt_description
+                  }
                   author={img.user.name}
+                  onClick={() => handleImageClick(img)}
                 />
               ))}
           </div>
@@ -90,8 +109,11 @@ const Search = () => {
                 <ImageCard
                   key={img.id}
                   src={img.urls.small}
-                  title={img.description}
+                  title={
+                    img.description ? img.description : img.alt_description
+                  }
                   author={img.user.name}
+                  onClick={() => handleImageClick(img)}
                 />
               ))}
           </div>

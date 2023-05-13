@@ -1,8 +1,7 @@
 import React from "react";
 import Image from "react-bootstrap/Image";
 
-import loveIcon from "./love-icon.svg";
-import loveIconFilled from "./love-icon-filled.svg";
+import LikeButton from "../LikeButton";
 
 import "./style.css";
 
@@ -10,19 +9,20 @@ interface Props {
   src: string;
   title: string;
   author: string;
+  onClick?: () => void;
 }
 
-const ImageCard = ({ src, title, author }: Props) => {
-  const [isLiked, setIsLiked] = React.useState(false);
+const ImageCard = ({ src, title, author, onClick }: Props) => {
   return (
     <div className="img-card">
-      <Image src={src} width={"100%"} className="img-top-rounded" />
+      <Image
+        src={src}
+        width={"100%"}
+        className="img-top-rounded"
+        onClick={onClick && onClick}
+      />
       <div className="image-card-actions">
-        <img
-          src={isLiked ? loveIconFilled : loveIcon}
-          className="image-card-action-icon"
-          onClick={() => setIsLiked(!isLiked)}
-        />
+        <LikeButton />
       </div>
       <div className="image-card-info">
         <p className="image-card-info-author">{author}</p>

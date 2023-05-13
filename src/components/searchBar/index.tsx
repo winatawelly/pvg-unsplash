@@ -7,9 +7,10 @@ import icon from "./icon3.svg";
 
 interface Props {
   value?: string;
+  size?: "sm" | "md";
 }
 
-const SearchBar = ({ value }: Props) => {
+const SearchBar = ({ value, size = "md" }: Props) => {
   const formRef = React.useRef<HTMLFormElement | null>(null);
   const navigate = useNavigate();
   const [query, setQuery] = React.useState(value || "");
@@ -22,19 +23,23 @@ const SearchBar = ({ value }: Props) => {
   return (
     <form onSubmit={onSearch} ref={formRef}>
       <div id="search-bar-container">
-        <button id="search-bar-button" type="submit">
+        <button
+          id="search-bar-button"
+          type="submit"
+          className={size === "sm" ? "search-small" : ""}
+        >
           <img
             role="button"
             id="search-bar-icon"
+            className={size === "sm" ? "search-icon-small" : ""}
             src={icon}
             alt="search"
-            height="32px"
-            width="32px"
           />
         </button>
         <input
           required
           id="search-bar"
+          className={size === "sm" ? "search-small" : ""}
           placeholder="Search images"
           value={query}
           onChange={(e) => setQuery(e.target.value)}

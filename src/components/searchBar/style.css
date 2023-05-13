@@ -4,6 +4,7 @@
 
 #search-bar {
   height: 48px;
+  width: 200px;
   background-color: whitesmoke;
   color: black;
   outline: none;
@@ -11,6 +12,10 @@
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
   padding-left: 12px;
+}
+
+.search-small {
+  height: 32px !important;
 }
 
 #search-bar-button {
@@ -27,6 +32,13 @@
 
 #search-bar-icon {
   cursor: pointer;
+  height: 24px;
+  width: 24px;
+}
+
+.search-icon-small {
+  height: 24px;
+  width: 24px;
 }
 
 #homepage-headline > h5 {

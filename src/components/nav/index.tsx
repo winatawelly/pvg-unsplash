@@ -5,7 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 
 import SearchBar from "../searchBar";
 
-import logo from "./logo.svg";
+import logo from "./logoPVG.png";
 
 import "./style.css";
 
@@ -19,16 +19,14 @@ const Nav = () => {
         <Navbar.Brand href="/" className="navbar-logo">
           <img
             src={logo}
-            width="48"
-            height="48"
+            height="32"
             className="d-inline-block align-top"
             alt="React Bootstrap logo"
           />
-          PVG-Unsplash
         </Navbar.Brand>
         {!isHome && (
           <div className="d-flex">
-            <SearchBar value={searchParams.get("q") || ""} />
+            <SearchBar value={searchParams.get("q") || ""} size="sm" />
           </div>
         )}
       </Container>
