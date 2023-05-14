@@ -35,6 +35,7 @@ const ImageModal = ({ show, onHide, data }: Props) => {
         <div className="position-relative">
           <Image src={data?.urls.regular} className="image-modal-img" />
           <LikeButton
+            data={data}
             className="modal-content-action box-shadow"
             variant="circle"
           />

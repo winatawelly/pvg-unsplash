@@ -3,3 +3,17 @@
   align-items: center;
   font-size: 24px !important;
 }
+
+.view-liked {
+  border-style: solid;
+  border-color: white;
+  padding: 3px 12px;
+  border-radius: 6px;
+  background-color: whitesmoke;
+  color: black;
+}
+
+.view-liked:hover {
+  background-color: black;
+  color: whitesmoke;
+}
