@@ -2,6 +2,29 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## How To Install
+
+- clone this repo
+- install package using yarn (`yarn add`) or npm (`npm install`)
+- run the scring using yarn (`yarn start`) or npm (`npm run start`)
+
+## Package used
+
+- unsplashJS
+- react bootstrap
+
+## Working Features
+
+- Image Search
+- Lightbox
+- Save to Favourite
+- Cache (handled by unsplash JS)
+- responsive
+
+## Difficulties
+
+- Implenting `LIKES` feature is a bit messy because I'm only using `React Context` and `localStorage`. the ideal solution would be using API Request and more robust state management library such as redux
+
 ## Available Scripts
 
 In the project directory, you can run:
