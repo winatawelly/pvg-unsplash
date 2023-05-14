@@ -10,7 +10,7 @@ import { LikedContext } from "./contexts/LikedContext";
 import Liked from "./pages/liked";
 
 const App = () => {
-  const likedData: [] = JSON.parse(localStorage.getItem("liked") || "[{}]");
+  const likedData: [] = JSON.parse(localStorage.getItem("liked") || "[]");
   const [liked, setLiked] = React.useState(likedData);
   const value = { liked, setLiked };
 
