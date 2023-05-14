@@ -17,7 +17,7 @@ const SearchBar = ({ value, size = "md" }: Props) => {
 
   const onSearch = (e: FormEvent) => {
     e.preventDefault();
-    navigate(`/search?q=${query}`);
+    navigate(`/search?q=${query}`, { replace: true });
   };
 
   return (

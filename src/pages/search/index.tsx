@@ -18,23 +18,40 @@ const Search = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
-  const [page, setPage] = React.useState(0);
-  const [column1, setColumn1] = React.useState<Photo[] | null>(null);
-  const [column2, setColumn2] = React.useState<Photo[] | null>(null);
-  const [column3, setColumn3] = React.useState<Photo[] | null>(null);
+  const [page, setPage] = React.useState(1);
+
+  const [column1, setColumn1] = React.useState<Photo[]>([]);
+  const [column2, setColumn2] = React.useState<Photo[]>([]);
+  const [column3, setColumn3] = React.useState<Photo[]>([]);
 
   const [selectedImage, setSelectedImage] = React.useState<Photo>();
   const [isModalOpen, setModalOpen] = React.useState(false);
   const [isEmpty, setIsEmpty] = React.useState(false);
 
   const query = searchParams.get("q");
-  const { data, isLoading, isError } = usePhotos({
+
+  const { data, totalPage, isLoading, isError } = usePhotos({
     query: query || "",
+    page: page,
   });
 
   const handleImageClick = (image: Photo) => {
     setSelectedImage(image);
     setModalOpen(true);
+  };
+
+  const handleScroll = () => {
+    if (
+      window.innerHeight + Math.round(window.scrollY) >=
+        document.body.offsetHeight - 100 &&
+      page < totalPage
+    ) {
+      setPage(page + 1);
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
   };
 
   const loadingRenderer = () => (
@@ -86,6 +103,7 @@ const Search = () => {
             />
           ))}
       </div>
+      {page === totalPage && <div>You have reached the bottom of the page</div>}
     </>
   );
 
@@ -98,20 +116,29 @@ const Search = () => {
     </div>
   );
 
+  // empty checker effect
   React.useEffect(() => {
-    if (!isLoading && data?.length === 0 && page === 0) {
+    if (!isLoading && data?.length === 0 && page === 1) {
       setIsEmpty(true);
     } else {
       setIsEmpty(false);
     }
   }, [data, isLoading, page]);
 
+  // no query checker effect
   React.useEffect(() => {
     if (searchParams.get("q") === "" || searchParams.get("q") === null) {
       navigate("/");
+    } else {
+      // new query -> reset to initial state
+      if (column1.length !== 0) {
+        scrollToTop();
+        window.location.reload();
+      }
     }
   }, [searchParams]);
 
+  // getData effect
   React.useEffect(() => {
     if (data) {
       let column1Temp: Photo[] = [];
@@ -128,15 +155,20 @@ const Search = () => {
         }
       });
 
-      // setColumn1(data.slice(0, 6));
-      // setColumn2(data.slice(6, 12));
-      // setColumn3(data.slice(12));
-
-      setColumn1([...column1Temp]);
-      setColumn2([...column2Temp]);
-      setColumn3([...column3Temp]);
+      setColumn1([...column1, ...column1Temp]);
+      setColumn2([...column2, ...column2Temp]);
+      setColumn3([...column3, ...column3Temp]);
     }
   }, [data]);
+
+  // attach event handler to detect page scroll
+  React.useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [isLoading]);
 
   return (
     <div id="search-page">
